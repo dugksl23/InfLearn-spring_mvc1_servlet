@@ -20,15 +20,8 @@ public class RequestGetMethod extends HttpServlet { //http api server interface�
         // Rest method 는 protected void service()로 통일
 
         //super.service(req, resp);
-        Map<String, String[]> parameterMap = req.getParameterMap();
-        Enumeration<String> parameterNames = req.getParameterNames();
-
-
-//        Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
-//        entries.iterator().forEachRemaining(parameter -> {
-//            System.out.println("dhkdy?");
-//            System.out.println(parameter.getKey() + ":" + parameterMap.get(parameter.getKey()));
-//        });
+        System.out.println("=== 단일 parameter 조회 ===");
+        System.out.println("[ 단일 parameter 조회 ]");
 
         req.getParameterNames().asIterator().forEachRemaining(parameter -> System.out.println(req.getParameter(parameter)));
 
