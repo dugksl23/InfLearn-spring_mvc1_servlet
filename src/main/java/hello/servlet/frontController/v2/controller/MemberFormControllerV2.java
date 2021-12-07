@@ -20,5 +20,6 @@ public class MemberFormControllerV2 implements Controllerv2 {
     @Override
     public MyView process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         return new MyView("/WEB-INF/views/formView.jsp");
+
     }
 }
