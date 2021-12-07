@@ -1,11 +1,15 @@
 package domain;
 
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberRepository {
 
     private static final MemberRepository store = new MemberRepository();
@@ -15,6 +19,7 @@ public class MemberRepository {
     public static final MemberRepository getInstance() {
         return store;
     }
+
 
 
 
