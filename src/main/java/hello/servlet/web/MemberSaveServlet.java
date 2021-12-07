@@ -24,11 +24,11 @@ public class MemberSaveServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ServletInputStream inputStream = req.getInputStream();
-        Member member = objectMapper.readValue(inputStream, Member.class);
+        //ServletInputStream inputStream = req.getInputStream();
+        //Member member = objectMapper.readValue(inputStream, Member.class);
 
 
-        //Member member = new Member(req.getParameter("username"), Long.parseLong(req.getParameter("age")));
+        Member member = new Member(req.getParameter("username"), Long.parseLong(req.getParameter("age")));
         member = memberRepository.save(member);
 
         resp.setContentType("text/html");
