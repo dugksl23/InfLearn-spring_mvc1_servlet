@@ -1,6 +1,6 @@
 package hello.servlet.response;
 
-import Entity.HelloData;
+import hello.servlet.Entity.HelloData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 

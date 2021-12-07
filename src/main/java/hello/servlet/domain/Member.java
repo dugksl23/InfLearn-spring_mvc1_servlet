@@ -1,4 +1,4 @@
-package domain;
+package hello.servlet.domain;
 
 
 import lombok.Getter;

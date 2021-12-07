@@ -1,12 +1,10 @@
 package hello.servlet.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import domain.Member;
-import domain.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import hello.servlet.domain.Member;
+import hello.servlet.domain.MemberRepository;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

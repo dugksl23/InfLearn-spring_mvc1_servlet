@@ -1,7 +1,7 @@
 package hello.servlet.request;
 
 
-import Entity.HelloData;
+import hello.servlet.Entity.HelloData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StreamUtils;
