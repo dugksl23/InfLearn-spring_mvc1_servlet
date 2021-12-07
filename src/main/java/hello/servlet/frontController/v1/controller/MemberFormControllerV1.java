@@ -19,7 +19,7 @@ public class MemberFormControllerV1 implements ControllerV1 {
     @Override
     public void process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         log.info("new form");
-        String viewPath = "/WEB-INF/views/";
+        String viewPath = "/WEB-INF/views/formView.jsp";
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(viewPath);
         requestDispatcher.forward(req, res);
 

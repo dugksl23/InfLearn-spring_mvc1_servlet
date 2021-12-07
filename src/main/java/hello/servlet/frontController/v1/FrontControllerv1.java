@@ -40,8 +40,8 @@ public class FrontControllerv1 extends HttpServlet {
         }
 
         ControllerV1 controllerV1 = controllerv1Map.get(contextPath);
-        controllerV1.process(req,resp);//다형성에 의해서 overriding 된 함수가 호출된다.client는 구현체가 몰라도 된다.
-
+        log.info("controllerV1, {}", controllerV1.getClass());
+        controllerV1.process(req, resp);//다형성에 의해서 overriding 된 함수가 호출된다.client는 구현체가 몰라도 된다.
 
 
     }

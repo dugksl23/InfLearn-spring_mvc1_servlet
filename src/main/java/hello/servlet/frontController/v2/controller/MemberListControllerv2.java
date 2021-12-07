@@ -1,7 +1,9 @@
-package hello.servlet.frontController.v1.controller;
+package hello.servlet.frontController.v2.controller;
 
 import hello.servlet.domain.MemberRepository;
+import hello.servlet.frontController.MyView;
 import hello.servlet.frontController.v1.ControllerV1;
+import hello.servlet.frontController.v2.Controllerv2;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.RequestDispatcher;
@@ -10,17 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
 @Slf4j
-public class MemberSaveControllerv1 implements ControllerV1 {
+public class MemberListControllerv2 implements Controllerv2 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
-    public void process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        log.info("save");
-        String viewPath = "/WEB-INF/views/saveView.jsp";
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(viewPath);
-        requestDispatcher.forward(req, res);
+    public MyView process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        MyView myView = new MyView("/WEB-INF/views/listView.jsp");
+        return myView;
     }
+
 }
