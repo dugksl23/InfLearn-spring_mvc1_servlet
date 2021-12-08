@@ -29,13 +29,6 @@ public class MyView {
 
     }
 
-//    public void render(ModelView mv, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        modelToRequestAttribute(mv, req);// model을 다시 req에 setAttrbute에 셋팅
-//        resp.setStatus(HttpServletResponse.SC_OK);
-//        RequestDispatcher requestDispatcher = req.getRequestDispatcher(this.getViewPath());
-//        requestDispatcher.forward(req, resp);
-//    }
-
     private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest req ) {
 
 
