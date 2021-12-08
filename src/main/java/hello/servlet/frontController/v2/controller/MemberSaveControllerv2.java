@@ -19,7 +19,7 @@ public class MemberSaveControllerv2 implements Controllerv2 {
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
-    public MyView process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public MyView process(HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         return new MyView("/WEB-INF/views/saveView.jsp");
     }
 }

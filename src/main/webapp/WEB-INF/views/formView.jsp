@@ -13,7 +13,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/frontController/v1/members/save" method="post">
+<form action="/frontController/v3/members/save" method="post">
     username: <input type="text" name="username" />
     age:      <input type="text" name="age" />
     <button type="submit">전송</button>

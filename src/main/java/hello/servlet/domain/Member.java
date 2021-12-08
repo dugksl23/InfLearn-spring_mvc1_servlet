@@ -18,5 +18,11 @@ public class Member {
         this.username = username;
         this.age = age;
     }
+
+    public Member(Long id, String username, Long age) {
+        this.id = id;
+        this.username = username;
+        this.age = age;
+    }
 }
 

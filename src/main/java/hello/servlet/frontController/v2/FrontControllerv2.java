@@ -1,7 +1,10 @@
-package hello.servlet.frontController.v2.controller;
+package hello.servlet.frontController.v2;
 
 import hello.servlet.frontController.MyView;
 import hello.servlet.frontController.v2.Controllerv2;
+import hello.servlet.frontController.v2.controller.MemberFormControllerV2;
+import hello.servlet.frontController.v2.controller.MemberListControllerv2;
+import hello.servlet.frontController.v2.controller.MemberSaveControllerv2;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
