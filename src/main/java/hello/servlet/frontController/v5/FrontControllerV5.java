@@ -6,6 +6,7 @@ import hello.servlet.frontController.v3.controller.MemberFormControllerV3;
 import hello.servlet.frontController.v3.controller.MemberListControllerV3;
 import hello.servlet.frontController.v3.controller.MemberSaveControllerV3;
 import hello.servlet.frontController.v5.handlerAdopterList.ControllerV3HandlerAdopter;
+import hello.servlet.frontController.v5.handlerAdopterList.ControllerV4HandlerAdopter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ObjectUtils;
 
@@ -36,9 +37,16 @@ public class FrontControllerV5 extends HttpServlet {
      */
     @PostConstruct
     public void initHandlerMappingMap() {
+        // v3
         handlerMappingMap.put("/frontController/v5/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/frontController/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/frontController/v5/v3/members", new MemberListControllerV3());
+
+        // v4
+        handlerMappingMap.put("/frontController/v5/v4/members/save", new MemberSaveControllerV3());
+        handlerMappingMap.put("/frontController/v5/v4/members/new-form", new MemberFormControllerV3());
+        handlerMappingMap.put("/frontController/v5/v4/members", new MemberListControllerV3());
+
     }
 
     /**
@@ -48,6 +56,7 @@ public class FrontControllerV5 extends HttpServlet {
     @PostConstruct
     public void initHandlerAdoptersList() {
         handlerAdopterList.add(new ControllerV3HandlerAdopter());
+        handlerAdopterList.add(new ControllerV4HandlerAdopter());
     }
 
 
@@ -72,7 +81,7 @@ public class FrontControllerV5 extends HttpServlet {
         /**
          * support()
          * 핸들러 어댑터 목록 조회
-         * - 핸들러(구현체)를 처리할 수 있는 어답터(상위인터페이스) 목록을 조회
+         * - 요청 url을 처리할 수 있는 구현체의 adopter 목록을 조회
          * @return HandlerAdopter handlerAdopter (구현체 adopter의 interface, 다형성)
          */
         log.info("======= 구현체의 상위 인터페이스 일치여부 조회 start ==========");
