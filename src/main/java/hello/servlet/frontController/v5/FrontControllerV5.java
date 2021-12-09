@@ -30,15 +30,23 @@ public class FrontControllerV5 extends HttpServlet {
     private Map<String, Object> handlerMappingMap = new HashMap<>(); // 요청 url을 handler에 매핑하기 위해서 해당 interface 구현체 정보(v1~5)를 담는다.
     private List<HandlerAdopter> handlerAdopterList = new ArrayList<>(); // 요청된 url에 따른 interface HandlerAdopter 들을 담는다.
 
+
+    /**
+     * 요청 url에 따른 구현체 controller 들을 매핑하기 위해서 담는 HashMap
+     */
     @PostConstruct
-    public void initHandlerMappingMap() { // controller interface의 HandlerAdopter를 HashMap 담는다.
+    public void initHandlerMappingMap() {
         handlerMappingMap.put("/frontController/v5/v3/members/save", new MemberSaveControllerV3());
         handlerMappingMap.put("/frontController/v5/v3/members/new-form", new MemberFormControllerV3());
         handlerMappingMap.put("/frontController/v5/v3/members", new MemberListControllerV3());
     }
 
+    /**
+     * 요청된 Url를 처리해줄 adopter 를 frontController 에 담는 list
+     * - 요청 url 을 해당 frontController 에서 처리할 adopter들만 담는다.
+     */
     @PostConstruct
-    public void initHandlerAdoptersList() { //요청된 Url를 처리해줄 frontController들 list에 담는다.
+    public void initHandlerAdoptersList() {
         handlerAdopterList.add(new ControllerV3HandlerAdopter());
     }
 
