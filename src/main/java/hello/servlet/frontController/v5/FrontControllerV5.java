@@ -46,24 +46,44 @@ public class FrontControllerV5 extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        log.info("=== 요청된 url에 매핑할 구현체를 조회 start ========"); //핸들러 매핑 정보 조회
-        Object handler = getHandler(req.getRequestURI());// 요청 url에 따른 구현체(controller)를 식별 -> 핸들러 매핑 정보 조회
+        /**
+         * getHandler()
+         * 핸들러 매핑 정보 조회
+         * - 요청 url에 따른 구현체(controller)를 식별 -> 핸들러 매핑 정보 조회
+         * @return Object object (요청 url을 처리할 구현체 handler)
+         */
+        log.info("=== 요청된 url에 매핑할 구현체를 조회 start ========");
+        Object handler = getHandler(req.getRequestURI());
         if (ObjectUtils.isEmpty(handler)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().write("not found");
         }
         log.info("======= 요청된 url에 매핑할 구현체를 조회하는 것은 end =============");
 
-        log.info("======= 구현체의 상위 인터페이스 일치여부 조회 start =========="); // 핸들러 어댑터 목록 조회, 핸들러(구현체)를 처리할 수 있는 어답터(상위인터페이스) 목록을 조회
+
+        /**
+         * support()
+         * 핸들러 어댑터 목록 조회
+         * - 핸들러(구현체)를 처리할 수 있는 어답터(상위인터페이스) 목록을 조회
+         * @return HandlerAdopter handlerAdopter (구현체 adopter의 interface, 다형성)
+         */
+        log.info("======= 구현체의 상위 인터페이스 일치여부 조회 start ==========");
         Optional<HandlerAdopter> handlerAdopter = getHandlerAdopter(handler);
         if (handlerAdopter.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().write("not found");
+        }
+        log.info("===== 구현체의 상위 인터페이스 일치여부 조회 완료 =============");
 
-        } else if (handlerAdopter.isPresent()) {
-            log.info("===== 구현체의 상위 인터페이스 일치여부 조회 완료 =============");
+        /**
+         *  handler()
+         *  핸들러 어댑터를 통해 구현체를 핸들링
+         *   - controller를 대신해서 adopter 에서 해당 controller를 호출 및 실행
+         * @return ModelView mv (viwPath 및 model을 내장)
+         */
+        if (handlerAdopter.isPresent()) {
 
-            log.info("===== handler adopter 를 통해 구현체(controller or handler) 실행 start ============="); //핸들러 어댑터를 통해 구현체(핸들러) 호출 및 실행
+            log.info("===== handler adopter 를 통해 구현체(controller or handler) 실행 start =============");
             ModelView mv = handlerAdopter.get().handle(req, resp, handler);
             log.info("===== handler adopter 를 통해 구현체 실행 end =============");
 
@@ -74,6 +94,11 @@ public class FrontControllerV5 extends HttpServlet {
 
     }
 
+    /**
+     *
+     * @param handler
+     * @return handler의 구현체
+     */
     private Optional<HandlerAdopter> getHandlerAdopter(Object handler) {
         return handlerAdopterList.stream().filter(handlerAdopter -> handlerAdopter.support(handler)).findFirst();
     }
